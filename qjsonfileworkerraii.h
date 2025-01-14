@@ -59,7 +59,7 @@ protected:
     template <typename T>
     void saveImpl(const T& value)
     {
-        m_document = QJsonDocument(static_cast<QJsonObject>(value));
+        m_document = QJsonDocument{ static_cast<QJsonObject>(value) };
     }
     
     template <template <typename> typename C, typename T>
@@ -68,7 +68,7 @@ protected:
         QJsonArray array;
         for (const auto& item : value)
             array.append(static_cast<QJsonObject>(item));
-        m_document = QJsonDocument(array);
+        m_document = QJsonDocument{ array };
     }
     
 private:
